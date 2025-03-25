@@ -40,7 +40,7 @@ public class TaskController {
         return taskService.searchTasksByDescription(description);
     }
 
-    @GetMapping("/search/subtasks")
+    @GetMapping("/search/subtask")
     public List<Subtask> searchSubtasksByName(@RequestParam String subtaskName) {
         return taskService.searchSubtasksByName(subtaskName);
     }
