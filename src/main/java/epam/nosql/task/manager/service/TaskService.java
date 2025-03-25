@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TaskService {
     Task createTask(TaskDto taskDto);
-    Task updateTask(String id, Task task);
+    Task updateTask(String id, TaskDto taskDto);
     void deleteTask(String id);
     List<Task> getAllTasks();
     Task getTaskById(String id);
@@ -16,4 +16,8 @@ public interface TaskService {
     List<Task> getOverdueTasks();
     List<Task> searchTasksByDescription(String description);
     List<Subtask> searchSubtasksByName(String subtaskName);
+
+    Task createSubtasksInTask(String id, List<Subtask> subtasks);
+
+    void deleteSubtasksInTask(String id);
 }

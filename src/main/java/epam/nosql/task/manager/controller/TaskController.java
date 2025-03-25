@@ -51,12 +51,22 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public Task updateTask(@PathVariable String id, @RequestBody Task task) {
-        return taskService.updateTask(id, task);
+    public Task updateTask(@PathVariable String id, @RequestBody TaskDto taskDto) {
+        return taskService.updateTask(id, taskDto);
     }
 
     @DeleteMapping("/{id}")
     public void deleteTask(@PathVariable String id) {
         taskService.deleteTask(id);
+    }
+
+    @PostMapping("/subtask/{id}")
+    public Task createSubtasksInTask(@PathVariable String id, @RequestBody List<Subtask> subtasks) {
+        return taskService.createSubtasksInTask(id, subtasks);
+    }
+
+    @DeleteMapping("/subtask/{id}")
+    public void deleteSubtasksInTask(@PathVariable String id) {
+        taskService.deleteSubtasksInTask(id);
     }
 }

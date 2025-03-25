@@ -1,5 +1,6 @@
 package epam.nosql.task.manager.model.entity;
 
+import epam.nosql.task.manager.model.Category;
 import epam.nosql.task.manager.model.Subtask;
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -23,9 +24,9 @@ public class Task {
     private String name;
     private String description;
     private List<Subtask> subtasks;
-    private String category;
+    private Category category;
 
-    public Task(LocalDate dateOfCreation, LocalDate deadline, String name, String description, String category, List<Subtask> subtasks) {
+    public Task(LocalDate dateOfCreation, LocalDate deadline, String name, String description, Category category, List<Subtask> subtasks) {
         this.dateOfCreation = dateOfCreation;
         this.deadline = deadline;
         this.name = name;
