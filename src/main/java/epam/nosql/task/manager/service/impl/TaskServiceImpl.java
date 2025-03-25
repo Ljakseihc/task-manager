@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static epam.nosql.task.manager.util.Constants.DATE_TIME_FORMATTER;
+import static epam.nosql.task.manager.util.Constants.DATE_TIME_FORMATTER_UPDATED;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -33,16 +34,16 @@ public class TaskServiceImpl implements TaskService {
                 taskDto.name(),
                 taskDto.description(),
                 taskDto.category(),
-                taskDto.subtask()
+                taskDto.subtasks()
         ));
     }
 
     @Override
     public Task updateTask(String id, TaskDto taskDto) {
         var currentTask = getTaskById(id);
-        if(Objects.nonNull(taskDto.subtask())) currentTask.setSubtasks(taskDto.subtask());
+        if(Objects.nonNull(taskDto.subtasks())) currentTask.setSubtasks(taskDto.subtasks());
         if(Objects.nonNull(taskDto.category())) currentTask.setCategory(taskDto.category());
-        if(Objects.nonNull(taskDto.deadline())) currentTask.setDeadline(parseDate(taskDto.deadline()));
+        if(Objects.nonNull(taskDto.deadline())) currentTask.setDeadline(parseUpdatedDate(taskDto.deadline()));
         if(Objects.nonNull(taskDto.name())) currentTask.setName(taskDto.name());
         return taskRepository.save(currentTask);
     }
@@ -103,5 +104,9 @@ public class TaskServiceImpl implements TaskService {
 
     private LocalDate parseDate(String date) {
         return LocalDate.parse(date, DATE_TIME_FORMATTER);
+    }
+
+    private LocalDate parseUpdatedDate(String date) {
+        return LocalDate.parse(date, DATE_TIME_FORMATTER_UPDATED);
     }
 }

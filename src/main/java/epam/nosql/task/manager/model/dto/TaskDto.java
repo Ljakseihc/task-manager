@@ -10,6 +10,6 @@ public record TaskDto(
         String description,
         Category category,
         String deadline,
-        List<Subtask> subtask
+        List<Subtask> subtasks
 ) {
 }

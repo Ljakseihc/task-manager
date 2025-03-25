@@ -40,7 +40,7 @@ public class TaskController {
         return taskService.searchTasksByDescription(description);
     }
 
-    @GetMapping("/search/subtask")
+    @GetMapping("/search/subtasks")
     public List<Subtask> searchSubtasksByName(@RequestParam String subtaskName) {
         return taskService.searchSubtasksByName(subtaskName);
     }
@@ -60,12 +60,12 @@ public class TaskController {
         taskService.deleteTask(id);
     }
 
-    @PostMapping("/subtask/{id}")
+    @PostMapping("/subtasks/{id}")
     public Task createSubtasksInTask(@PathVariable String id, @RequestBody List<Subtask> subtasks) {
         return taskService.createSubtasksInTask(id, subtasks);
     }
 
-    @DeleteMapping("/subtask/{id}")
+    @DeleteMapping("/subtasks/{id}")
     public void deleteSubtasksInTask(@PathVariable String id) {
         taskService.deleteSubtasksInTask(id);
     }
