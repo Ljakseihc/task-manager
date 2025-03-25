@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: task_manager
+    networks:
+      - task-network
+
+volumes:
+  mongo-data:
+
+networks:
+  task-network:
+    driver: bridge
